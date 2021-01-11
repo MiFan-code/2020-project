@@ -100,7 +100,10 @@ def query(start_sta,dict_sta,start_time,is_adult=True):
                 """
                 print(train_info,len(train_info))
                 fromat_list.append(train_info)
-            dboper.FormTrainInfo(fromat_list)#将整理好的信息发送到数据库
+            if len(draft_ano_data)!=0:
+                dboper.FormTrainInfo(fromat_list)#将整理好的信息发送到数据库
+            else:
+                ErrorTag=2
             """
                 车次编号：第三栏
                 始发站：第四栏
