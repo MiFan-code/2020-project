@@ -11,8 +11,11 @@ import stations
 import dboper
 import OperMF
 
-
 if __name__ == "__main__":
     stations.get_all_stations()
     temp = dboper.readout()
+    stations.query("上海", "广州", "2021-06-16")
+    res=dboper.GetTrainInfo()
+    for all_train in res:
+        print(all_train)
     OperMF.ui_opera()

@@ -7,6 +7,8 @@
 from MF import *
 import sys
 import time
+import stations
+import dboper
 
 
 def init_time(temp_ui):
@@ -65,6 +67,45 @@ def init_icon(temp_app):
     icon = QtGui.QIcon()
     icon.addPixmap(QtGui.QPixmap("Icon/nf4~2.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
     temp_app.setWindowIcon(icon)
+
+
+# 设置TableView
+def Init_view(myUI):
+    myUI.ShowTicket.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)#不可编辑
+    myUI.ShowTicket.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)#垂直滚动条始终开启
+
+"""
+ def Query_click(self):
+        Start_addre = self.start_in.text()
+        Dict_addre = self.dict_in.text()
+        Date_temp = self.dateEditForTrain.date()
+        Date_year = str(Date_temp.year())
+        Date_month = Date_temp.month()
+        if Date_month < 10:
+            Date_month = '0' + str(Date_month)
+        else:
+            Date_month = str(Date_month)
+        Date_day = Date_temp.day()
+        if Date_day < 10:
+            Date_day = '0' + str(Date_day)
+        else:
+            Date_day = str(Date_day)
+        Date = Date_year + '-' + Date_month + '-' + Date_day
+        print(Start_addre + Dict_addre + Date)
+        res = stations.query(Start_addre, Dict_addre, Date)
+        print(res)
+        if res == 1:
+            self.TipLabel.setText("貌似有一些小问题，尝试再输入一遍吧")
+        elif res == 2:
+            self.TipLabel.setText("啧，没有可供选择的列车了呢，可能要考虑换乘了")
+            self.ShowTicket.showRow(16)
+        else:
+            res = dboper.GetTrainInfo
+            for temp in res:
+                print(temp)
+"""
+
+
 def ui_opera():
     myApp = QtWidgets.QApplication(sys.argv)
     init_icon(myApp)
@@ -74,6 +115,11 @@ def ui_opera():
     init_time(myUI)
     init_char(myUI)
     init_tip(myUI)
-
+    Init_view(myUI)
+    myUI.QueryButton.pressed.connect(myUI.Query_click)
     myWindow.show()
     sys.exit(myApp.exec_())
+
+
+#是不是只看
+
