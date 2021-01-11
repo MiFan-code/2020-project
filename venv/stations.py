@@ -75,7 +75,7 @@ def query(start_sta,dict_sta,start_time,is_adult=True):
                 for anotemp in temp:
                     print("第",num,"栏：",anotemp,end='')
                     num+=1;
-                Useful_info=[3,4,7,8,9,10,32,31,30,21,23,33,28,24,29,26]
+                Useful_info=[3,6,7,8,9,10,32,31,30,21,23,33,28,24,29,26]
                 site=[0,1,2,3,4,5,14,13,12,6,7,15,10,8,11,9]
                 title=["车次","出发站","到达站","出发时间","到达时间","用时","商务座","一等座","二等座","高级软卧","软卧","动卧","硬卧","软座","硬座","无座"]
                 temptitle=[]
@@ -83,7 +83,7 @@ def query(start_sta,dict_sta,start_time,is_adult=True):
                     temptitle.append('\''+i+'\'')
                 fromat_list.append(temptitle)
                 for index in Useful_info:
-                    if index!=4 and index!=7:
+                    if index!=6 and index!=7:
                         if temp[index]=='':
                             temp[index]='--'
                         train_info.append('\''+temp[index]+'\'')
@@ -103,7 +103,8 @@ def query(start_sta,dict_sta,start_time,is_adult=True):
             dboper.FormTrainInfo(fromat_list)#将整理好的信息发送到数据库
             """
                 车次编号：第三栏
-                出发站：第四栏
+                始发站：第四栏
+                出发站：第6栏
                 到达站：第七栏
                 发时：第八栏
                 到时：第九栏

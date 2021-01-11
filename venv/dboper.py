@@ -114,4 +114,3 @@ def GetTrainInfo():
     cursor.close()
     conn.close
     return res
-
