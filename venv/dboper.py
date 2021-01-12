@@ -98,12 +98,12 @@ def FormTrainInfo(FromatInfo):
             addorder=addorder+item+','
         addorder=addorder[0:len(addorder)-1]
         addorder=addorder+')'
-        print(addorder)
+        #print(addorder)
         cursor.execute(addorder)
     cursor.close();
     conn.commit();
     conn.close();
-    print("已将车次信息存放到数据库中")
+    #print("已将车次信息存放到数据库中")
 
 def GetTrainInfo():
     conn=sqlite3.connect("TrainInfo.db")

@@ -52,29 +52,32 @@ def query(start_sta,dict_sta,start_time,is_adult=True):
         if len(draft_data)==0:
             ErrorTag=2
         else:
-            print(draft_data)
+            #print(draft_data)
             draft_ano_data=[]
             fromat_list=[]
             for temp in draft_data:
-                print(temp)
+                #print(temp)
                 train_list=temp.split('|')
                 num=0
                 for nnnn in train_list:
                     num+=1
-                print("共分成了",num,"栏");
+                #print("共分成了",num,"栏");
                 #不能买票的话，就不看他
                 if train_list[11]!='IS_TIME_NOT_BUY':
                     draft_ano_data.append(train_list)
-                    print("暂存，待处理")
+                    #print("暂存，待处理")
                 else:
-                    print("移除，不显示")
+                    #print("移除，不显示")
+                    pass
             for temp in draft_ano_data:
-                print('\n')
+                #print('\n')
                 num=0
                 train_info=[];
+                """
                 for anotemp in temp:
                     print("第",num,"栏：",anotemp,end='')
                     num+=1;
+                """
                 Useful_info=[3,6,7,8,9,10,32,31,30,21,23,33,28,24,29,26]
                 site=[0,1,2,3,4,5,14,13,12,6,7,15,10,8,11,9]
                 title=["车次","出发站","到达站","出发时间","到达时间","用时","商务座","一等座","二等座","高级软卧","软卧","动卧","硬卧","软座","硬座","无座"]
@@ -98,7 +101,7 @@ def query(start_sta,dict_sta,start_time,is_adult=True):
                         else:
                             train_info.append('\'' + dboper.queryout(anotemp,False) + '\'')#得到代号所对应的车站名
                 """
-                print(train_info,len(train_info))
+                #print(train_info,len(train_info))
                 fromat_list.append(train_info)
             if len(draft_ano_data)!=0:
                 dboper.FormTrainInfo(fromat_list)#将整理好的信息发送到数据库

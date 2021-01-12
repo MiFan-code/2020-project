@@ -482,7 +482,7 @@ class Ui_MainWindow(object):
         Date = Date_year + '-' + Date_month + '-' + Date_day
         print(Start_addre + Dict_addre + Date)
         res = stations.query(Start_addre, Dict_addre, Date)
-        print(res)
+        #print(res)
         if res == 1:
             self.TipLabel.setText("貌似有一些小问题，尝试再输入一遍吧")
         elif res == 2:
@@ -492,26 +492,26 @@ class Ui_MainWindow(object):
             self.TipLabel.setText("Master!这是可供选择的车票！")
             self.model=QtGui.QStandardItem()
             res = dboper.GetTrainInfo()
-            for temp in res:
-                print(temp)
+            #for temp in res:
+                #print(temp)
             row=0
             column=0
             for i in res:
                 row+=1
             for i in res[0]:
                 column+=1
-            print(row,"行",column,"列")
+            #print(row,"行",column,"列")
             i=0
             j=0
             self.model=QtGui.QStandardItemModel()
             for i_row in res:
                 j=0
                 for j_row in res[i]:
-                    print(i,"行",j,"列")
+                    #print(i,"行",j,"列")
                     temp_item=QtGui.QStandardItem(res[i][j])
-                    print("断点")
+                    #print("断点")
                     self.model.setItem(i,j,temp_item)
-                    print("断点")
+                    #print("断点")
 
                     j+=1
                 i+=1
