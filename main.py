@@ -14,6 +14,8 @@ import OperMF
 if __name__ == "__main__":
     stations.get_all_stations()
     temp = dboper.readout()
+    宅男模式="我是宅男"
+    print(宅男模式)    
     """
     stations.query("上海", "广州", "2021-06-16")
     res=dboper.GetTrainInfo()

@@ -32,7 +32,7 @@ def query(start_sta,dict_sta,start_time,is_adult=True):
     else:
         purpose="0X00"
     #合成出目标网址，如果不能查询，说明不能购票
-    tarurl="""https://kyfw.12306.cn/otn/leftTicket/queryT?leftTicketDTO.train_date="""+start_time+"""&leftTicketDTO.from_station="""+start_id+"""&leftTicketDTO.to_station="""+dict_id+"""&purpose_codes="""+purpose
+    tarurl="""https://kyfw.12306.cn/otn/leftTicket/queryY?leftTicketDTO.train_date="""+start_time+"""&leftTicketDTO.from_station="""+start_id+"""&leftTicketDTO.to_station="""+dict_id+"""&purpose_codes="""+purpose
     print(tarurl)
     #如果response的返回网址为https://www.12306.cn/mormhweb/logFiles/error.html，说明出现了错误
     ErrorUrl='https://www.12306.cn/mormhweb/logFiles/error.html'
@@ -47,7 +47,7 @@ def query(start_sta,dict_sta,start_time,is_adult=True):
     #果不是错误信息
     else:
         res_js = response.json()
-        #print(res_js)
+        print(res_js)
         draft_data=res_js['data']['result']
         if len(draft_data)==0:
             ErrorTag=2
